@@ -26,4 +26,4 @@ A licença comercial inclui:
 Suporte Técnico Prioritário: Acesso direto a suporte técnico para resolução de problemas e dúvidas.
 Personalizações: Opção de solicitar funcionalidades específicas para o software, adaptando-o às suas necessidades.
 Garantias de Uso: Garantias sobre a funcionalidade e estabilidade do software, conforme acordado em contrato.
-Para adquirir a Licença Comercial, entre em contato através de [seu-email@dominio.com] para discutir termos e preços.
+Para adquirir a Licença Comercial, entre em contato através de [erlandson10jr@gmail.com] para discutir termos e preços.
