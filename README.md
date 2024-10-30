@@ -94,4 +94,4 @@ A partir da raiz do projeto, entre na pasta do backend:
 
 
 <h2>Licença</h2>
-Esse projeto está sob a licença MIT. Para mais detalhes, Veja o arquivo [LICENSE](LICENSE.md).
+Esse projeto está sob a licença MIT. Para mais detalhes, Veja o arquivo [license](LICENSE.MD).
