@@ -59,26 +59,26 @@ body {
 }
 
 table {
-    max-width: 800px; /* Ajuste para a largura máxima da tabela */
-    width: 100%; /* A tabela agora ocupará 100% da largura disponível */
+    max-width: 800px;
+    width: 100%;
     margin: 20px auto;
     border-collapse: collapse;
-    font-size: 12px; /* Aumentado para uma leitura mais confortável */
+    font-size: 12px;
 }
 
 th, td {
     border: 1px solid #dddddd;
-    padding: 8px; /* Aumentado para um preenchimento mais confortável */
+    padding: 8px;
     text-align: center;
-    font-size: 14px; /* Aumentado para uma leitura mais confortável */
+    font-size: 14px;
 }
 
 th {
     background-color: #007bff;
     color: #ffffff;
-    font-size: 16px; /* Aumentado para destacar melhor o cabeçalho */
+    font-size: 16px;
     font-weight: bold;
-    padding: 10px; /* Aumentado para um preenchimento mais confortável */
+    padding: 10px;
 }
 
 tr:nth-child(even) {
@@ -117,16 +117,16 @@ td.upcoming {
     background-color: #007bff;
     color: #fff;
     border: none;
-    padding: 12px 24px; /* Aumentado o preenchimento */
+    padding: 12px 24px;
     font-size: 16px;
     cursor: pointer;
-    border-radius: 5px; /* Arredondar os cantos do botão */
-    transition: background-color 0.3s; /* Efeito de transição suave */
+    border-radius: 5px;
+    transition: background-color 0.3s;
 }
 
 .btn-submit:hover {
     background-color: #0056b3;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra no hover para efeito visual */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .form {
@@ -145,34 +145,32 @@ td.upcoming {
 
 .form-group input {
     width: calc(100% - 10px);
-    padding: 10px; /* Aumentado o preenchimento */
+    padding: 10px;
     font-size: 14px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    transition: border-color 0.3s; /* Efeito de transição suave */
+    transition: border-color 0.3s;
 }
 
 .form-group input:focus {
-    border-color: #007bff; /* Cor da borda ao focar */
-    outline: none; /* Remover contorno padrão */
+    border-color: #007bff;
+    outline: none;
 }
 
 .exame-antigo {
     background-color: #ffcccc;
 }
-
-/* Responsividade */
 @media (max-width: 600px) {
     .header h1 {
-        font-size: 24px; /* Reduzir o tamanho da fonte no cabeçalho */
+        font-size: 24px;
     }
 
     .nav-item {
-        display: block; /* Mudar para coluna em dispositivos menores */
+        display: block;
         margin-bottom: 10px;
     }
 
     table {
-        font-size: 10px; /* Ajustar tamanho da fonte para tabelas em dispositivos móveis */
+        font-size: 10px;
     }
 }
