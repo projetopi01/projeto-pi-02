@@ -1,10 +1,12 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+import os
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///usuarios.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'erlandsonsilvadonascimento')  # Substitua pelo valor desejado
 
 db = SQLAlchemy(app)
 
@@ -51,9 +53,11 @@ def index():
 @app.route('/login', methods=['POST', 'GET'])
 def login():
     if request.method == 'POST':
-        username = request.form.get('username')
-        password = request.form.get('password')
-        if username == 'usuario' and password == '123456':
+        username = os.getenv('APP_USERNAME', 'usuario')  # Obtém o nome de usuário da variável de ambiente
+        password = os.getenv('APP_PASSWORD', '123456')    # Obtém a senha da variável de ambiente
+        entered_username = request.form.get('username')
+        entered_password = request.form.get('password')
+        if entered_username == username and entered_password == password:
             return redirect(url_for('cadastro_gestante'))
         else:
             return redirect(url_for('login'))
@@ -63,15 +67,6 @@ def login():
 @app.route('/cadastro_gestante', methods=['GET'])
 def cadastro_gestante():
     return render_template('cadastro_gestante.html')
-
-@app.route('/submit_login', methods=['POST'])
-def submit_login():
-    username = request.form.get('username')
-    password = request.form.get('password')
-    if username == '123456' and password == '123456':
-        return redirect(url_for('cadastro_gestante'))
-    else:
-        return redirect(url_for('login'))
 
 @app.route('/submit', methods=['POST'])
 def submit():
@@ -101,7 +96,6 @@ def submit():
     db.session.commit()
     return render_template('success_page.html', nome=nome)
 
-
 @app.route('/api/gestantes', methods=['GET'])
 def get_usuarios():
     usuarios = Usuario.query.all()
@@ -110,4 +104,3 @@ def get_usuarios():
 if __name__ == '__main__':
     create_tables()
     app.run(debug=True)
-
