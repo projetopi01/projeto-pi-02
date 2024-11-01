@@ -53,16 +53,17 @@ def index():
 @app.route('/login', methods=['POST', 'GET'])
 def login():
     if request.method == 'POST':
-        username = os.getenv('APP_USERNAME', 'usuario')  # Obtém o nome de usuário da variável de ambiente
-        password = os.getenv('APP_PASSWORD', '123456')    # Obtém a senha da variável de ambiente
+        username = os.getenv('APP_USERNAME', 'usuario')
+        password = os.getenv('APP_PASSWORD', '123456')
         entered_username = request.form.get('username')
         entered_password = request.form.get('password')
         if entered_username == username and entered_password == password:
             return redirect(url_for('cadastro_gestante'))
         else:
-            return redirect(url_for('login'))
+            return "Usuário ou senha incorretos", 401  # Retorna uma mensagem de erro
     else:
         return render_template('login_page.html')
+
 
 @app.route('/cadastro_gestante', methods=['GET'])
 def cadastro_gestante():
