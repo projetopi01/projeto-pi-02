@@ -60,10 +60,9 @@ def login():
         if entered_username == username and entered_password == password:
             return redirect(url_for('cadastro_gestante'))
         else:
-            return "Usuário ou senha incorretos", 401  # Retorna uma mensagem de erro
+            return redirect(url_for('login'))
     else:
         return render_template('login_page.html')
-
 
 @app.route('/cadastro_gestante', methods=['GET'])
 def cadastro_gestante():
@@ -84,24 +83,18 @@ def submit():
     estado = request.form.get('estado')
     telefone = request.form.get('telefone')
 
-    existing_user = Usuario.query.filter_by(cpf=cpf).first()
-    if existing_user:
-        return render_template('error_page.html', message="Erro: O CPF já está cadastrado.")
-    
-    novo_usuario = Usuario(cpf=cpf, nome=nome, data_nascimento=data_nascimento, idade=idade,
-                           nome_mae=nome_mae, data_prevista_parto=data_prevista_parto,
-                           ultima_menstruacao=ultima_menstruacao, endereco=endereco,
-                           cep=cep, cidade=cidade, estado=estado, telefone=telefone)
-    
+    novo_usuario = Usuario(
+        cpf=cpf, nome=nome, data_nascimento=data_nascimento,
+        idade=idade, nome_mae=nome_mae, data_prevista_parto=data_prevista_parto,
+        ultima_menstruacao=ultima_menstruacao, endereco=endereco, cep=cep,
+        cidade=cidade, estado=estado, telefone=telefone
+    )
+
     db.session.add(novo_usuario)
     db.session.commit()
-    return render_template('success_page.html', nome=nome)
 
-@app.route('/api/gestantes', methods=['GET'])
-def get_usuarios():
-    usuarios = Usuario.query.all()
-    return jsonify([usuario.to_dict() for usuario in usuarios])
+    return redirect(url_for('cadastro_gestante'))
 
 if __name__ == '__main__':
     create_tables()
-    app.run(debug=True)
+    app.run()
