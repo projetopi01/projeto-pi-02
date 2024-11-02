@@ -6,7 +6,7 @@ import os
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///usuarios.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'erlandsonsilvadonascimento')  # Substitua pelo valor desejado
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'erlandsonsilvadonascimento')
 
 db = SQLAlchemy(app)
 
@@ -42,12 +42,10 @@ class Usuario(db.Model):
             'telefone': self.telefone
         }
 
-# Função para criar as tabelas
 def create_tables():
     with app.app_context():
         db.create_all()
 
-# Chama a função para garantir que as tabelas sejam criadas
 create_tables()
 
 @app.route('/')
@@ -98,6 +96,14 @@ def submit():
     db.session.commit()
 
     return redirect(url_for('cadastro_gestante'))
+
+@app.route('/api/gestante/<cpf>', methods=['GET'])
+def get_gestante(cpf):
+    usuario = Usuario.query.filter_by(cpf=cpf).first()
+    if usuario:
+        return jsonify(usuario.to_dict()), 200
+    else:
+        return jsonify({'error': 'Usuário não encontrado'}), 404
 
 if __name__ == '__main__':
     app.run()
