@@ -62,7 +62,8 @@ def login():
         if entered_username == username and entered_password == password:
             return redirect(url_for('cadastro_gestante'))
         else:
-            return redirect(url_for('login'))
+            error_message = "Usuário ou senha incorretos."
+            return render_template('login_page.html', error=error_message)
     else:
         return render_template('login_page.html')
 
@@ -106,4 +107,5 @@ def get_gestante(cpf):
         return jsonify({'error': 'Usuário não encontrado'}), 404
 
 if __name__ == '__main__':
-    app.run()
+    port = int(os.environ.get("PORT", 5000))  # Usa a porta fornecida pelo Render
+    app.run(host="0.0.0.0", port=port)  # Faz o app escutar em todas as interfaces
