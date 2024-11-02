@@ -1,7 +1,8 @@
-from flask import Flask, render_template, request, redirect, url_for, jsonify
+from flask import Flask, render_template, request, redirect, url_for, jsonify, session, flash
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import os
+from functools import wraps
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///usuarios.db'
@@ -48,6 +49,16 @@ def create_tables():
 
 create_tables()
 
+# Decorador para proteger as rotas que precisam de login
+def login_required(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if 'user_id' not in session:  # Verifica se o usuário está autenticado
+            flash('Você precisa estar logado para acessar essa página.')
+            return redirect(url_for('login'))  # Redireciona para a página de login
+        return f(*args, **kwargs)
+    return decorated_function
+
 @app.route('/')
 def index():
     return render_template('login_page.html')
@@ -60,6 +71,7 @@ def login():
         entered_username = request.form.get('username')
         entered_password = request.form.get('password')
         if entered_username == username and entered_password == password:
+            session['user_id'] = entered_username  # Armazena o usuário na sessão
             return redirect(url_for('cadastro_gestante'))
         else:
             error_message = "Usuário ou senha incorretos."
@@ -68,10 +80,12 @@ def login():
         return render_template('login_page.html')
 
 @app.route('/cadastro_gestante', methods=['GET'])
+@login_required  # Protege a rota de cadastro de gestantes
 def cadastro_gestante():
     return render_template('cadastro_gestante.html')
 
 @app.route('/submit', methods=['POST'])
+@login_required  # Protege a rota de submit, se necessário
 def submit():
     cpf = request.form.get('cpf')
     nome = request.form.get('nome')
@@ -103,12 +117,18 @@ def success():
     return render_template('success_page.html')  # Renderiza a página de sucesso
 
 @app.route('/api/gestante/<cpf>', methods=['GET'])
+@login_required  # Protege a rota da API, se necessário
 def get_gestante(cpf):
     usuario = Usuario.query.filter_by(cpf=cpf).first()
     if usuario:
         return jsonify(usuario.to_dict()), 200
     else:
         return jsonify({'error': 'Usuário não encontrado'}), 404
+
+@app.route('/logout')
+def logout():
+    session.pop('user_id', None)  # Remove o usuário da sessão
+    return redirect(url_for('login'))  # Redireciona para a página de login
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))  # Usa a porta fornecida pelo Render
