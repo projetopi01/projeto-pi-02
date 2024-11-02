@@ -96,7 +96,11 @@ def submit():
     db.session.add(novo_usuario)
     db.session.commit()
 
-    return redirect(url_for('cadastro_gestante'))
+    return redirect(url_for('success'))  # Redireciona para a página de sucesso
+
+@app.route('/success', methods=['GET'])
+def success():
+    return render_template('success_page.html')  # Renderiza a página de sucesso
 
 @app.route('/api/gestante/<cpf>', methods=['GET'])
 def get_gestante(cpf):
