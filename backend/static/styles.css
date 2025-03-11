@@ -30,17 +30,12 @@ body {
 /* Seção de busca */
 .section {
     width: 90%;
-    max-width: 700px;
+    max-width: 800px;
     margin: 20px auto;
     background: #fff;
     padding: 20px;
     border-radius: 15px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1), -5px -5px 10px rgba(255, 255, 255, 0.7);
-}
-
-.section-title {
-    color: #0056b3;
-    text-align: center;
 }
 
 /* Formulário de busca */
@@ -82,62 +77,66 @@ button:hover {
 }
 
 /* Tabela */
-table {
+.table-container {
     width: 100%;
-    max-width: 90%;
+    max-width: 900px; /* Define um tamanho limite */
     margin: 0 auto;
-    border-collapse: collapse;
-    margin-top: 20px;
+    overflow-x: auto; /* Adiciona rolagem horizontal se necessário */
+    padding: 10px;
+    border-radius: 15px;
+    background: #fff;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1), -5px -5px 10px rgba(255, 255, 255, 0.7);
 }
 
-table, th, td {
-    border: 1px solid #ccc;
-    border-radius: 10px;
+table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed; /* Garante que a tabela respeite os tamanhos das colunas */
 }
+
+/* Definir tamanhos das colunas */
+th:nth-child(1), td:nth-child(1) { width: 120px; } /* Nome */
+th:nth-child(2), td:nth-child(2) { width: 100px; } /* CPF */
+th:nth-child(3), td:nth-child(3) { width: 80px; } /* Exames */
+th:nth-child(4), td:nth-child(4) { width: 100px; } /* SUA */
+th:nth-child(5), td:nth-child(5) { width: 120px; } /* Toxoplasmose */
+th:nth-child(6), td:nth-child(6) { width: 100px; } /* Laqueadura */
+th:nth-child(7), td:nth-child(7) { width: 100px; } /* Vacinas */
 
 th {
     background: #0056b3;
     color: white;
     padding: 10px;
-    text-align: left;
+    text-align: center;
+    font-size: 14px;
 }
 
 td {
     padding: 10px;
     background: #f9f9f9;
-    box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.1), inset -5px -5px 10px rgba(255, 255, 255, 0.7);
-    text-align: center; /* Alinha o conteúdo das células ao centro */
+    text-align: center;
+    font-size: 14px;
 }
 
 tr:nth-child(even) {
     background: #e9e9e9;
 }
 
-/* Tabela de Cronograma - ajustando o tamanho */
-.table-container {
-    max-height: 300px;
-    overflow-y: auto;
-}
-
-.table-container table {
-    font-size: 14px;
-}
-
 /* Responsividade */
-@media (max-width: 600px) {
-    .section {
-        width: 95%;
+@media (max-width: 768px) {
+    .table-container {
+        max-width: 100%;
+        overflow-x: auto;
     }
 
-    input[type="text"] {
-        font-size: 14px;
-    }
-
-    button {
-        font-size: 14px;
-    }
-
-    .table-container table {
+    table {
         font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    th, td {
+        font-size: 10px;
+        padding: 8px;
     }
 }
