@@ -84,6 +84,8 @@ button:hover {
 /* Tabela */
 table {
     width: 100%;
+    max-width: 90%;
+    margin: 0 auto;
     border-collapse: collapse;
     margin-top: 20px;
 }
@@ -104,6 +106,7 @@ td {
     padding: 10px;
     background: #f9f9f9;
     box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.1), inset -5px -5px 10px rgba(255, 255, 255, 0.7);
+    text-align: center; /* Alinha o conteúdo das células ao centro */
 }
 
 tr:nth-child(even) {
