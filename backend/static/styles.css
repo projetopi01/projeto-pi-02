@@ -12,33 +12,31 @@ body {
     background-color: #0056b3;
     color: white;
     text-align: center;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1), -5px -5px 10px rgba(255, 255, 255, 0.7);
+    padding: 20px;
 }
 
 .header .logo {
-    font-size: 22px;
+    font-size: 24px;
     font-weight: bold;
 }
 
 .header .subtitle {
-    font-size: 14px;
+    font-size: 16px;
     margin-top: 5px;
 }
 
-/* Seção */
+/* Seção de busca */
 .section {
     width: 90%;
-    max-width: 700px;
+    max-width: 750px;
     margin: 20px auto;
-    background: #fff;
+    background: white;
     padding: 15px;
-    border-radius: 12px;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1), -5px -5px 10px rgba(255, 255, 255, 0.7);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
 }
 
-/* Formulário */
+/* Formulário de busca */
 .form-group {
     display: flex;
     flex-direction: column;
@@ -51,25 +49,22 @@ body {
 }
 
 input[type="text"] {
-    padding: 8px;
+    padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 14px;
-    background: #f9f9f9;
-    box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.1), inset -5px -5px 10px rgba(255, 255, 255, 0.7);
+    font-size: 16px;
 }
 
 button {
     margin-top: 10px;
-    padding: 8px;
+    padding: 10px;
     background: #0056b3;
     color: white;
     border: none;
-    font-size: 14px;
+    font-size: 16px;
     border-radius: 5px;
     cursor: pointer;
     transition: background 0.3s ease-in-out;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1), -5px -5px 10px rgba(255, 255, 255, 0.7);
 }
 
 button:hover {
@@ -81,22 +76,22 @@ button:hover {
     width: 100%;
     max-width: 750px;
     margin: 0 auto;
+    overflow-x: auto; /* Scroll horizontal se precisar */
     padding: 10px;
-    border-radius: 12px;
-    background: #fff;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1), -5px -5px 10px rgba(255, 255, 255, 0.7);
-    overflow-x: auto;
+    background: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
 }
 
 /* Estilos da Tabela */
 table {
     width: 100%;
     border-collapse: collapse;
-    table-layout: fixed; 
-    font-size: 12px; /* Tamanho reduzido */
+    font-size: 14px; /* Tamanho do texto reduzido */
+    table-layout: fixed; /* Mantém tamanho fixo das colunas */
 }
 
-/* Largura fixa para cada coluna */
+/* Definição de largura para cada coluna */
 th, td {
     padding: 8px;
     text-align: center;
@@ -106,17 +101,17 @@ th, td {
 th {
     background: #0056b3;
     color: white;
-    font-size: 13px;
+    font-size: 14px;
 }
 
-/* Diminuindo tamanho das colunas */
-th:nth-child(1), td:nth-child(1) { width: 80px; } /* Nome */
-th:nth-child(2), td:nth-child(2) { width: 80px; } /* CPF */
-th:nth-child(3), td:nth-child(3) { width: 70px; } /* Exames */
-th:nth-child(4), td:nth-child(4) { width: 70px; } /* SUA */
+/* Ajustando a largura de cada coluna */
+th:nth-child(1), td:nth-child(1) { width: 120px; } /* Nome */
+th:nth-child(2), td:nth-child(2) { width: 100px; } /* CPF */
+th:nth-child(3), td:nth-child(3) { width: 80px; } /* Exames */
+th:nth-child(4), td:nth-child(4) { width: 80px; } /* SUA */
 th:nth-child(5), td:nth-child(5) { width: 90px; } /* Toxoplasmose */
-th:nth-child(6), td:nth-child(6) { width: 80px; } /* Laqueadura */
-th:nth-child(7), td:nth-child(7) { width: 80px; } /* Vacinas */
+th:nth-child(6), td:nth-child(6) { width: 90px; } /* Laqueadura */
+th:nth-child(7), td:nth-child(7) { width: 90px; } /* Vacinas */
 
 td {
     background: #f9f9f9;
@@ -134,20 +129,10 @@ tr:nth-child(even) {
     }
 
     table {
-        font-size: 11px;
+        font-size: 12px;
     }
 
     th, td {
         padding: 6px;
-    }
-}
-
-@media (max-width: 480px) {
-    table {
-        font-size: 10px;
-    }
-
-    th, td {
-        padding: 5px;
     }
 }
