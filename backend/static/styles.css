@@ -12,33 +12,33 @@ body {
     background-color: #0056b3;
     color: white;
     text-align: center;
-    padding: 20px;
+    padding: 15px;
     border-radius: 10px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1), -5px -5px 10px rgba(255, 255, 255, 0.7);
 }
 
 .header .logo {
-    font-size: 24px;
+    font-size: 22px;
     font-weight: bold;
 }
 
 .header .subtitle {
-    font-size: 16px;
+    font-size: 14px;
     margin-top: 5px;
 }
 
-/* Seção de busca */
+/* Seção */
 .section {
     width: 90%;
-    max-width: 800px;
+    max-width: 700px;
     margin: 20px auto;
     background: #fff;
-    padding: 20px;
-    border-radius: 15px;
+    padding: 15px;
+    border-radius: 12px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1), -5px -5px 10px rgba(255, 255, 255, 0.7);
 }
 
-/* Formulário de busca */
+/* Formulário */
 .form-group {
     display: flex;
     flex-direction: column;
@@ -51,21 +51,21 @@ body {
 }
 
 input[type="text"] {
-    padding: 10px;
+    padding: 8px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 16px;
+    font-size: 14px;
     background: #f9f9f9;
     box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.1), inset -5px -5px 10px rgba(255, 255, 255, 0.7);
 }
 
 button {
     margin-top: 10px;
-    padding: 10px;
+    padding: 8px;
     background: #0056b3;
     color: white;
     border: none;
-    font-size: 16px;
+    font-size: 14px;
     border-radius: 5px;
     cursor: pointer;
     transition: background 0.3s ease-in-out;
@@ -76,46 +76,50 @@ button:hover {
     background: #003f7f;
 }
 
-/* Tabela */
+/* Container da Tabela */
 .table-container {
     width: 100%;
-    max-width: 900px; /* Define um tamanho limite */
+    max-width: 750px;
     margin: 0 auto;
-    overflow-x: auto; /* Adiciona rolagem horizontal se necessário */
     padding: 10px;
-    border-radius: 15px;
+    border-radius: 12px;
     background: #fff;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1), -5px -5px 10px rgba(255, 255, 255, 0.7);
+    overflow-x: auto;
 }
 
+/* Estilos da Tabela */
 table {
     width: 100%;
     border-collapse: collapse;
-    table-layout: fixed; /* Garante que a tabela respeite os tamanhos das colunas */
+    table-layout: fixed; 
+    font-size: 12px; /* Tamanho reduzido */
 }
 
-/* Definir tamanhos das colunas */
-th:nth-child(1), td:nth-child(1) { width: 120px; } /* Nome */
-th:nth-child(2), td:nth-child(2) { width: 100px; } /* CPF */
-th:nth-child(3), td:nth-child(3) { width: 80px; } /* Exames */
-th:nth-child(4), td:nth-child(4) { width: 100px; } /* SUA */
-th:nth-child(5), td:nth-child(5) { width: 120px; } /* Toxoplasmose */
-th:nth-child(6), td:nth-child(6) { width: 100px; } /* Laqueadura */
-th:nth-child(7), td:nth-child(7) { width: 100px; } /* Vacinas */
+/* Largura fixa para cada coluna */
+th, td {
+    padding: 8px;
+    text-align: center;
+    border: 1px solid #ccc;
+}
 
 th {
     background: #0056b3;
     color: white;
-    padding: 10px;
-    text-align: center;
-    font-size: 14px;
+    font-size: 13px;
 }
 
+/* Diminuindo tamanho das colunas */
+th:nth-child(1), td:nth-child(1) { width: 80px; } /* Nome */
+th:nth-child(2), td:nth-child(2) { width: 80px; } /* CPF */
+th:nth-child(3), td:nth-child(3) { width: 70px; } /* Exames */
+th:nth-child(4), td:nth-child(4) { width: 70px; } /* SUA */
+th:nth-child(5), td:nth-child(5) { width: 90px; } /* Toxoplasmose */
+th:nth-child(6), td:nth-child(6) { width: 80px; } /* Laqueadura */
+th:nth-child(7), td:nth-child(7) { width: 80px; } /* Vacinas */
+
 td {
-    padding: 10px;
     background: #f9f9f9;
-    text-align: center;
-    font-size: 14px;
 }
 
 tr:nth-child(even) {
@@ -123,20 +127,27 @@ tr:nth-child(even) {
 }
 
 /* Responsividade */
-@media (max-width: 768px) {
+@media (max-width: 600px) {
     .table-container {
         max-width: 100%;
         overflow-x: auto;
     }
 
     table {
-        font-size: 12px;
+        font-size: 11px;
+    }
+
+    th, td {
+        padding: 6px;
     }
 }
 
 @media (max-width: 480px) {
-    th, td {
+    table {
         font-size: 10px;
-        padding: 8px;
+    }
+
+    th, td {
+        padding: 5px;
     }
 }
