@@ -8,6 +8,28 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
        
 </head>
+    <script>
+    function buscarCEP() {
+        var cep = document.getElementById("cep").value.replace(/\D/g, ''); // Remove caracteres não numéricos
+
+        if (cep.length === 8) { // Verifica se tem 8 dígitos
+            fetch(https://viacep.com.br/ws/${cep}/json/)
+                .then(response => response.json())
+                .then(data => {
+                    if (!data.erro) {
+                        document.getElementById("endereco").value = data.logradouro;
+                        document.getElementById("cidade").value = data.localidade;
+                        document.getElementById("estado").value = data.uf;
+                    } else {
+                        alert("CEP não encontrado!");
+                    }
+                })
+                .catch(error => console.error("Erro ao buscar o CEP:", error));
+        } else {
+            alert("Digite um CEP válido com 8 dígitos.");
+        }
+    }
+</script>
 <body>
     <header class="header">
         <div class="container">
@@ -102,7 +124,7 @@
                 </div>
                 <div class="form-group">
                     <label for="cep">CEP:</label>
-                    <input type="text" id="cep" name="cep" required tabindex="11">
+<input type="text" id="cep" name="cep" maxlength="8" onblur="buscarCEP()" required>
                 </div>
                 <div class="form-group">
                     <label for="cidade">Cidade:</label>
