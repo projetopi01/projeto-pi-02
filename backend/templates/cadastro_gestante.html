@@ -328,4 +328,101 @@
                     <td contenteditable="true" class="editable upcoming" tabindex="126"></td>
                     <td contenteditable="true" class="editable upcoming" tabindex="127"></td>
                     <td contenteditable="true" class="editable upcoming" tabindex="128"></td>
-                    <td contenteditable="true" class="editable upcoming" tabindex="129"></td
+                    <td contenteditable="true" class="editable upcoming" tabindex="129"></td>
+                    <td contenteditable="true" class="editable upcoming">USG Obstétrico c/Doppler</td>
+                    <td contenteditable="true" class="editable upcoming" tabindex="130"></td>
+                    <td contenteditable="true" class="editable upcoming" tabindex="131"></td>
+                    <td contenteditable="true" class="editable upcoming" tabindex="132"></td>
+                    <td contenteditable="true" class="editable upcoming" tabindex="133"></td>
+                </tr>
+                <tr>
+                    <td>35 semanas</td>
+                    <td contenteditable="true" class="editable pending" tabindex="134"></td>
+                    <td contenteditable="true" class="editable upcoming" tabindex="135"></td>
+                    <td contenteditable="true" class="editable upcoming" tabindex="136"></td>
+                    <td contenteditable="true" class="editable upcoming" tabindex="137"></td>
+                    <td contenteditable="true" class="editable upcoming" tabindex="138"></td>
+                    <td contenteditable="true" class="editable upcoming" tabindex="139"></td>
+                    <td contenteditable="true" class="editable upcoming" tabindex="140"></td>
+                    <td contenteditable="true" class="editable upcoming">Coleta SGB</td>
+                    <td contenteditable="true" class="editable upcoming" tabindex="141">Avaliação médica e psicossocial</td>
+                    <td contenteditable="true" class="editable upcoming" tabindex="142"></td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Rede Cegonha. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        function calculateAge() {
+            var dob = document.getElementById('data_nascimento').value;
+            var today = new Date();
+            var birthDate = new Date(dob);
+            var age = today.getFullYear() - birthDate.getFullYear();
+            var m = today.getMonth() - birthDate.getMonth();
+            if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
+            document.getElementById('idade').value = age;
+        }
+
+        function calcularSemanas() {
+            var lastMenstruation = document.getElementById('ultima_menstruacao').value;
+            var today = new Date();
+            var lastMenstruationDate = new Date(lastMenstruation);
+            var differenceInTime = today.getTime() - lastMenstruationDate.getTime();
+            var differenceInWeeks = Math.floor(differenceInTime / (1000 * 3600 * 24 * 7));
+            alert("A gestante está aproximadamente " + differenceInWeeks + " semanas de gestação.");
+        }
+        
+        window.onload = function() {
+            var cells = document.querySelectorAll(".editable");
+
+            cells.forEach(function(cell) {
+                cell.addEventListener("click", function() {
+                    if (cell.classList.contains("pending")) {
+                        cell.classList.remove("pending");
+                        cell.classList.add("completed");
+                    } else if (cell.classList.contains("completed")) {
+                        cell.classList.remove("completed");
+                        cell.classList.add("upcoming");
+                    } else if (cell.classList.contains("upcoming")) {
+                        cell.classList.remove("upcoming");
+                        cell.classList.add("pending");
+                    }
+                });
+            });
+        };
+    </script>
+
+<script>
+    function buscarCEP() {
+        var cep = document.getElementById('cep').value.replace(/\D/g, '');
+
+        if (cep.length === 8) {
+            fetch(`https://viacep.com.br/ws/${cep}/json/`)
+                .then(response => response.json())
+                .then(data => {
+                    if (!data.erro) {
+                        document.getElementById('endereco').value = data.logradouro;
+                        document.getElementById('cidade').value = data.localidade;
+                        document.getElementById('estado').value = data.uf;
+                    } else {
+                        alert("CEP não encontrado.");
+                    }
+                })
+                .catch(error => console.error("Erro ao buscar CEP:", error));
+        } else {
+            alert("CEP inválido.");
+        }
+    }
+</script>
+
+</body>
+</html>
+
