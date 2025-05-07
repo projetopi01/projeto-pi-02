@@ -114,7 +114,6 @@
                 $.ajax({
                     url: `/api/gestante/${cpf}`,  // Rota que buscará os dados da gestante
                     method: 'GET',
-                    data: { cpf: cpf },
                     success: function(data) {
                         $('#nome-gestante').text(data.nome);
                         // Aqui, você pode preencher a tabela com dados específicos se necessário
