@@ -25,7 +25,7 @@ body {
     margin-top: 5px;
 }
 
-/* Seção principal com efeito de elevação (neumorphism) */
+
 .section {
     width: 90%;
     max-width: 800px;
@@ -34,7 +34,7 @@ body {
     padding: 20px;
     box-shadow: 5px 5px 10px #ccc, -5px -5px 10px #ffffff;
     border-radius: 12px;
-    overflow-x: auto; /* Permite rolagem horizontal se necessário */
+    overflow-x: auto; 
 }
 
 .section-title {
@@ -61,7 +61,7 @@ input[type="text"] {
     font-size: 16px;
 }
 
-/* Botão com efeito moderno */
+
 button {
     margin-top: 10px;
     padding: 10px;
@@ -89,8 +89,8 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
-    table-layout: fixed; /* Define tamanho fixo das colunas */
-    word-wrap: break-word; /* Quebra de linha no conteúdo longo */
+    table-layout: fixed;
+    word-wrap: break-word; 
 }
 
 table, th, td {
@@ -130,7 +130,7 @@ tr:hover {
         font-size: 14px;  
     }
 }
-/* Estilização do botão "Voltar ao Cadastro" */
+
 .btn-voltar {
     display: inline-block;
     margin-top: 20px;
