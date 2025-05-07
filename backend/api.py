@@ -5,8 +5,14 @@ api_bp = Blueprint('api', __name__, url_prefix='/api')
 
 @api_bp.route('/gestantes', methods=['GET'])
 def get_gestantes():
+    # Consultar as gestantes
     gestantes = Gestante.query.all()
 
+    # Verificar se há gestantes
+    if not gestantes:
+        return jsonify({"message": "Nenhuma gestante encontrada"}), 404
+
+    # Preparar os dados para resposta
     gestantes_lista = [
         {
             "id": gestante.id,
@@ -25,4 +31,4 @@ def get_gestantes():
         } for gestante in gestantes
     ]
 
-    return jsonify(gestantes_lista)
+    return jsonify(gestantes_lista), 200
