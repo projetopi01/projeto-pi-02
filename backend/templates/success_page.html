@@ -46,9 +46,8 @@
             background-color: #1a5276;
             color: #fff;
             text-decoration: none;
-            border-radius: 8px;
+            border-radius: 5px;
             font-weight: bold;
-            transition: background-color 0.3s ease;
         }
 
         .btn-voltar:hover {
@@ -61,9 +60,7 @@
         <div class="success-message">
             <h2 class="success-title">Cadastro realizado com sucesso!</h2>
             <p class="success-text">O usuário <strong>{{ nome }}</strong> foi cadastrado.</p>
-            <div style="text-align: center; margin-top: 20px;">
-                <a href="/cadastro" class="btn-voltar">Voltar ao Cadastro</a>
-            </div>
+            <a href="{{ url_for('cadastro_gestante') }}" class="btn-voltar">Voltar ao Cadastro</a>
         </div>
     </div>
 </body>
