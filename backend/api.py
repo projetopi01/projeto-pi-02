@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify
-from models import db, Gestante
+from models import db, Gestante, Exame
 
 api_bp = Blueprint('api', __name__, url_prefix='/api')
 
@@ -27,8 +27,29 @@ def get_gestantes():
             "cep": gestante.cep,
             "cidade": gestante.cidade,
             "estado": gestante.estado,
-            "telefone": gestante.telefone
+            "telefone": gestante.telefone,
+            "exames": [
+                {
+                    "tipo_exame": exame.tipo_exame,
+                    "data_exame": exame.data_exame.strftime('%Y-%m-%d') if exame.data_exame else None,
+                    "resultado": exame.resultado,
+                    "status": exame.status,  # Aqui, pegamos o status (pendente, próximo, concluído)
+                    "cor_status": get_status_color(exame.status)  # Aqui obtemos a cor do status
+                }
+                for exame in gestante.exames
+            ]
         } for gestante in gestantes
     ]
 
     return jsonify(gestantes_lista), 200
+
+
+def get_status_color(status):
+    # Defina a cor de acordo com o status do exame
+    if status == 'pendente':
+        return 'yellow'
+    elif status == 'concluído':
+        return 'green'
+    elif status == 'próximo':
+        return 'blue'
+    return 'gray'  # cor padrão caso o status não seja reconhecido
