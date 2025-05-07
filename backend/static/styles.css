@@ -25,7 +25,7 @@ body {
     margin-top: 5px;
 }
 
-
+/* Seção principal */
 .section {
     width: 90%;
     max-width: 800px;
@@ -60,7 +60,6 @@ input[type="text"] {
     border-radius: 5px;
     font-size: 16px;
 }
-
 
 button {
     margin-top: 10px;
@@ -145,4 +144,20 @@ tr:hover {
 
 .btn-voltar:hover {
     background-color: #003f7f;
+}
+
+/* Cores para os status das células editáveis */
+.editable.pending {
+    background-color: #f44336; /* Vermelho */
+    color: white;
+}
+
+.editable.completed {
+    background-color: #4CAF50; /* Verde */
+    color: white;
+}
+
+.editable.upcoming {
+    background-color: #FFC107; /* Amarelo */
+    color: black;
 }
