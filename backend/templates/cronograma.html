@@ -112,7 +112,7 @@
                 var cpf = $('#cpf').val();
                 
                 $.ajax({
-                    url: '/buscar_gestante',  // Rota que buscará os dados da gestante
+                    url: `/api/gestante/${cpf}`,  // Rota que buscará os dados da gestante
                     method: 'GET',
                     data: { cpf: cpf },
                     success: function(data) {
