@@ -49,7 +49,7 @@ def create_tables():
 
 create_tables()
 
-# Decorador para proteger as rotas que precisam de login
+
 def login_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
@@ -71,7 +71,7 @@ def login():
         entered_username = request.form.get('username')
         entered_password = request.form.get('password')
         if entered_username == username and entered_password == password:
-            session['user_id'] = entered_username  # Armazena o usuário na sessão
+            session['user_id'] = entered_username  
             return redirect(url_for('cadastro_gestante'))
         else:
             error_message = "Usuário ou senha incorretos."
@@ -110,11 +110,11 @@ def submit():
     db.session.add(novo_usuario)
     db.session.commit()
 
-    return redirect(url_for('success'))  # Redireciona para a página de sucesso
+    return redirect(url_for('success'))  
 
 @app.route('/success', methods=['GET'])
 def success():
-    return render_template('success_page.html')  # Renderiza a página de sucesso
+    return render_template('success_page.html') 
 
 @app.route('/api/gestante/<cpf>', methods=['GET'])
 @login_required  # Protege a rota da API, se necessário
@@ -127,9 +127,9 @@ def get_gestante(cpf):
 
 @app.route('/logout')
 def logout():
-    session.pop('user_id', None)  # Remove o usuário da sessão
-    return redirect(url_for('login'))  # Redireciona para a página de login
+    session.pop('user_id', None)  
+    return redirect(url_for('login'))  
 
 if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 5000))  # Usa a porta fornecida pelo Render
+    port = int(os.environ.get("PORT", 5000))  
     app.run(host="0.0.0.0", port=port)  # Faz o app escutar em todas as interfaces
