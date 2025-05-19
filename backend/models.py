@@ -19,7 +19,7 @@ class Gestante(db.Model):
     estado = db.Column(db.String(100), nullable=False)  # Estado
     telefone = db.Column(db.String(20), nullable=False)  # Telefone
 
-    # Relacionamento com Exame
+    
     exames = db.relationship('Exame', back_populates='gestante', cascade="all, delete-orphan")
 
     def to_dict(self):
