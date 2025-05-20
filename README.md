@@ -1,97 +1,168 @@
-<h1 align="center"> <img alt="Gerenciador de Cadastro de Gestantes" title="GestantesApp" src=".github/logo.png" width="200px" /> </h1> <h3 align="center"> Gerenciador de Cadastro de Gestantes: API, Frontend e Banco de Dados </h3> <blockquote align="center">“Cuidar do início da vida é construir um futuro saudável e promissor.”</blockquote> <p align="center"> <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; <a href="#-projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; <a href="#-instalação-e-execução">Instalação e execução</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; <a href="#-licença">Licença</a> </p> <br> <p align="center"> <img alt="PROJETO DO GERENCIADOR" src=".github/gestantes_app.png" width="100%"> </p>
+<h1 align="center">
+  <img alt="Gerenciador de Cadastro de Gestantes" title="GestantesApp" src=".github/logo.png" width="200px" />
+</h1>
 
-<h3>Tecnologias</h3>
-Esse projeto foi desenvolvido com as seguintes tecnologias:
+<h3 align="center">Gerenciador de Cadastro de Gestantes: API, Frontend e Banco de Dados</h3>
 
-- [Python](https://www.python.org/)
-- [Flask](https://flask.palletsprojects.com/)
-- [SQLAlchemy](https://www.sqlalchemy.org/)
-- [HTML, CSS e JavaScript](https://developer.mozilla.org/pt-BR/docs/Web)
+<blockquote align="center">“Cuidar do início da vida é construir um futuro saudável e promissor.”</blockquote>
 
-O Gerenciador de Gestantes é uma aplicação voltada para o gerenciamento de informações de gestantes. 
-A aplicação é composta de um backend em Flask que oferece uma API para consumo pela interface web.
+<p align="center">
+  <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-instalação-e-execução">Instalação e Execução</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-api">API</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-licença">Licença</a>
+</p>
 
-Backend: fornece uma API REST para gerenciamento de dados, incluindo operações de cadastro, atualização e busca de dados das gestantes.
-Frontend: interface web para os usuários, onde é possível realizar cadastro, listagem, busca por CPF e visualizar detalhes completos de cada gestante.
+<br>
 
-<h3>O projeto inclui:</h3>
+<p align="center">
+  <img alt="PROJETO DO GERENCIADOR" src=".github/gestantes_app.png" width="100%">
+</p>
 
-<h3>Backend:</h3> desenvolvido em Flask para gerenciamento de dados e criação de uma API para consumo.
+---
 
-<h3>Frontend:</h3> uma interface web voltada para os usuários, que possibilita cadastro, listagem, busca por CPF, e detalhes completos de cada gestante.
+## 🧪 Tecnologias
 
-<h3>Documentação:</h3> para guiar o uso, instalação e desenvolvimento.
+Esse projeto foi desenvolvido com as seguintes tecnologias e ferramentas:
 
-## Instalação e execução
-
-Clone do Repositório
-Faça um clone desse repositório e siga as instruções abaixo.
-
-*git clone https://github.com/seuusuario/gerenciador-gestantes.git
-cd gerenciador-gestantes*
 ### Backend
-A partir da raiz do projeto, entre na pasta do backend:
+- [Python 3.x](https://www.python.org/)
+- [Flask](https://flask.palletsprojects.com/)
+- [Flask-SQLAlchemy](https://flask-sqlalchemy.palletsprojects.com/)
+- [Gunicorn](https://gunicorn.org/)
+- [Pytest](https://docs.pytest.org/)
 
-*cd backend*
-### Instale o ambiente virtual e ative-o:
-
-*python -m venv venv*<br>
-*source venv/bin/activate*  # Para Linux/Mac<br>
-*.\venv\Scripts\activate*   # Para Windows<br>
-
-### Instale as dependências:
-*pip install -r requirements.txt*
-
-### Configure o banco de dados e crie as tabelas:
-*python create_db.py*
-
-### Inicie o servidor:
-*python run.py*
-
-## O servidor estará disponível em http://127.0.0.1:5000.
 ### Frontend
+- **HTML5, CSS3, JavaScript**
+- Scripts interativos com JavaScript para cálculo de idade, semanas, edição de exames e busca de CEP.
 
-### A partir da raiz do projeto, entre na pasta do frontend:
-*cd frontend*
+### Banco de Dados
+- [SQLite](https://www.sqlite.org/) (ambiente local)
+> Observação: em produção recomenda-se PostgreSQL para persistência de dados na nuvem.
 
-<strong>Abra o arquivo index.html em um navegador para ver a interface de usuário.</strong>
-### Docker (Opcional)
-*Para rodar o projeto completo com Docker, use o comando abaixo:*
+### Integrações e API
+- [ViaCEP](https://viacep.com.br/) — Busca automática de endereço por CEP.
+- API REST interna com endpoints para consultar gestantes e exames via JSON.
 
+### Deploy e CI/CD
+- [Render](https://render.com/) — Hospedagem da aplicação web.
+- [GitHub](https://github.com/) + [GitHub Actions](https://github.com/features/actions) — Versionamento e Integração Contínua.
 
-<strong>  gerenciador-gestantes/</strong>  
+### Acessibilidade
+- Implementação de boas práticas como `aria-label`, foco via teclado, contraste e semântica HTML.
 
+---
 
-<strong>├── backend/</strong>                        *# API e lógica do servidor em Flask*
+## 💻 Projeto
 
-<strong>│   ├── models/</strong>                     *# Modelos e configuração de banco de dados*
+O **Gerenciador de Gestantes** é uma aplicação voltada para o acompanhamento pré-natal de gestantes. Ele permite:
 
-<strong>│   ├── routes/</strong>                     *# Rotas da API*
+- Cadastro de gestantes com dados completos
+- Cálculo automático de idade e semanas de gestação
+- Tabela cronológica interativa de exames
+- Status coloridos editáveis nos exames
+- Busca por CPF
+- Visualização de dados e exames já preenchidos
+- Fornecimento de API REST com os dados cadastrados
 
-<strong>│   ├── create_db.py</strong>                *# Script para criação de tabelas*
+---
 
-<strong>│   ├── run.py</strong>                      *# Script para rodar o backend*
+## ⚙️ Instalação e Execução
 
-<strong>│   └── requirements.txt</strong>            *# Dependências do projeto*
+### Clone o repositório:
+```bash
+git clone https://github.com/seuusuario/gerenciador-gestantes.git
+cd gerenciador-gestantes
+```
 
-<strong>│</strong>  
-<strong>├── frontend/</strong>                       *# Interface Web*
+### Backend
+```bash
+cd backend
+python -m venv venv
+# Linux/Mac:
+source venv/bin/activate
+# Windows:
+.env\Scriptsctivate
 
-<strong>│   ├── index.html</strong>                  *# Página inicial*
+pip install -r requirements.txt
+```
 
-<strong>│   ├── cadastro_gestante.html</strong>      *# Formulário de cadastro*
+### Executar localmente:
+```bash
+python app.py
+# O servidor estará disponível em http://127.0.0.1:5000
+```
 
-<strong>│   ├── style.css</strong>                   *# Estilos da página*
+### Frontend
+```bash
+cd frontend
+# Abra o arquivo index.html no navegador
+```
 
-<strong>│   └── script.js</strong>                   *# Lógica JavaScript*
+---
 
-<strong>│</strong>
-<strong>├── docs/</strong>                     # Documentação e guias de uso*
+## 🔬 Testes Automatizados
 
-<strong>│</strong>
-<strong>└── docker-compose.yml</strong>           *# Configuração para rodar com Docker*
+### Para rodar testes com Pytest:
+```bash
+cd backend
+pytest
+```
 
+> Os testes são executados automaticamente também via GitHub Actions a cada push na branch `main`.
 
+---
 
-<h2>Licença</h2>
-Esse projeto está sob a licença MIT. Para mais detalhes, Veja o arquivo [license](LICENSE.MD).
+## 📡 API
+
+### Endpoints disponíveis:
+
+#### GET `/api/gestante`
+Retorna uma lista com todos os cadastros de gestantes.
+
+#### GET `/api/gestante/<cpf>`
+Retorna os dados de uma gestante específica, com base no CPF informado.
+
+#### POST `/api/exames_status`
+Recebe dados atualizados da tabela de exames para salvar no banco.
+
+---
+
+## 📂 Estrutura do Projeto
+
+```bash
+gerenciador-gestantes/
+├── backend/
+│   ├── app.py
+│   ├── api.py
+│   ├── models.py
+│   ├── templates/
+│   │   ├── cadastro_gestante.html
+│   │   ├── login_page.html
+│   │   ├── success_page.html
+│   ├── static/
+│   │   └── styles.css
+│   ├── requirements.txt
+│   └── Procfile
+│
+├── frontend/
+│   ├── index.html
+│   ├── cadastro_gestante.html
+│   ├── login_page.html
+│   └── static/
+│       └── styles.css
+│
+├── docs/
+│   └── documentação.md
+└── .github/
+    └── workflows/
+        └── python-tests.yml
+```
+
+---
+
+## 📝 Licença
+
+Esse projeto está sob a licença MIT.  
+Veja o arquivo [LICENSE.md](LICENSE.md) para mais detalhes.
